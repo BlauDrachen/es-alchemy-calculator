@@ -2,13 +2,6 @@ import enum
 from . import db
 
 
-class MerchantAvailability(enum.IntEnum):
-    none = 0
-    rare = 1
-    uncommon = 2
-    common = 3
-
-
 class Ingredient(db.Model):
     __tablename__ = 'ingredients'
     id = db.Column(db.Integer, primary_key=True)
@@ -21,10 +14,11 @@ class Ingredient(db.Model):
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     value = db.Column(db.Integer)
     weight = db.Column(db.Float)
-    availability = db.Column(db.Integer)
-    availability_withperk = db.Column(db.Integer)
+    availability = db.Column(db.Integer, db.ForeignKey('availability.id'))
+    availability_perk = db.Column(db.Integer, db.ForeignKey('availability.id'))
     can_grow = db.Column(db.Boolean)
     image_url = db.Column(db.String(255))
+
 
 class Effect(db.Model):
     __tablename__ = 'effects'
@@ -43,3 +37,9 @@ class Game(db.Model):
     name = db.Column(db.String(64))
     short_name = db.Column(db.String(20))
     is_dlc = db.Column(db.Boolean)
+
+
+class Availability(db.Model):
+    __tablename__ = 'availability'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
