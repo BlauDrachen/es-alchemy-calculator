@@ -1,0 +1,22 @@
+[
+  {
+    "availability": [
+      {
+        "id": 0,
+        "name": "None"
+      },
+      {
+        "id": 1,
+        "name": "Rare"
+      },
+      {
+        "id": 2,
+        "name": "Uncommon"
+      },
+      {
+        "id": 3,
+        "name": "Common"
+      }
+    ]
+  }
+]
